@@ -132,7 +132,7 @@ class HttpNtlmAuth(AuthBase):
         proxy_authenticate = r.headers.get('proxy-authenticate', '').lower()
         if r.status_code == 407 and 'ntlm' in proxy_authenticate:
             return self.retry_using_http_NTLM_auth('proxy-authenticate',
-                                                   'Proxy-authorization', r,
+                                                   'Proxy-authorization', r,'NTLM',
                                                    kwargs)
 
         return r
